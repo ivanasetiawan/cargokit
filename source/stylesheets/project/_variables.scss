@@ -1,0 +1,75 @@
+// *******************************************************************************
+// * TYPOGRAPHY
+// *******************************************************************************
+//What's part of the output and what isn't
+$compile: (
+	normalize: false,
+	grid: true,
+	spacing: true,
+);
+// *******************************************************************************
+// * TYPOGRAPHY
+// *******************************************************************************
+$font-size-default: 16px;
+$font-sans-serif: 'Source Sans Pro', sans-serif;
+
+// $font-sans-serif: 'Atlas Grotesk Detail', 'Source Sans Pro', sans-serif;
+
+// *******************************************************************************
+// * GRID
+// *******************************************************************************
+$columns: 12;
+$breakpoints: (
+	xs: 320px,
+	sm: 520px,
+	md: 980px,
+	lg: 1020px
+);
+$gutters: (
+	xs: 20px,
+	sm: 20px,
+	md: 30px,
+	lg: 60px
+);
+$container-maxwidth: (
+	lg: em(1020px)
+);
+
+// *******************************************************************************
+// * SPACING
+// *******************************************************************************
+$spacing-multiplier: (1, 2, 3, 4);
+$spacing-properties: (
+	pt: padding-top,
+	pb: padding-bottom,
+	mt: margin-top,
+	mb: margin-bottom
+);
+
+$spacing-distance: (
+	xs: 20px,
+	sm: 30px,
+	md: 40px,
+);
+
+// $spacing-distance: 20px;
+
+// *******************************************************************************
+// * COLOURS
+// *******************************************************************************
+//after the hex, add a true to enable it in the output
+//<"grey_light": #f4f2eb true>
+//generates a class called bg-grey_light with a bg color
+$colors: (
+
+	"funda-blue-light": #73cff7,
+	"funda-blue-dark": #0091d4,
+	"funda-orange": #f8b100,
+
+	"black": #1e1e1c true,
+	"white": #ffffff true,
+	"grey-light": #f1f1f1,
+	"grey-dark": #474949,
+	"grey-text": #8e8e8e,
+	"grey-medium": #e2e2e2
+);
