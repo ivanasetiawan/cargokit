@@ -1,0 +1,114 @@
+$width-basic: 1000px;
+$spacing-bottom: 40px;
+// // no more fixed - create a mixin out of it
+// $customWidth: 200px
+
+$spacing-twenty: 20px;
+$spacing-thirty: 30px;
+
+//$base-line-height is 24px while $base-font-size is 16px
+$base-font-size: 100% !default;
+$base-line-height: 150%;
+$em-base: 16px !default;
+
+$h1-font-size: emCalc(44px);
+$h2-font-size: emCalc(37px);
+$h3-font-size: emCalc(27px);
+$h4-font-size: emCalc(23px);
+$h5-font-size: emCalc(18px);
+$h6-font-size: 1em;
+
+// Mixins
+@mixin breakpoint($point) {
+  @if $point == large-size {
+    @media (max-width: 1250px) { @content; }
+  }
+  @else if $point == medium-size {
+    @media (max-width: 650px)  { @content; }
+  }
+  @else if $point == tiny-size {
+    @media (max-width: 400px)  { @content; }
+  }
+}
+
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+@mixin col($width, $padding, $float, $width-basic: $width-basic) {
+  padding: ($padding/$width-basic)*100%;
+  width: ($width/$width-basic)*100%;
+  float: $float;
+  @include breakpoint(tiny-size) {
+    float: none;
+    width: 100% - (2*(($padding/$width-basic)*100%));
+  }
+  @content;
+}
+
+@mixin customBoxes($customWidth, $type, $boxes: 3) {
+  @if $boxes == 3 {
+    li {
+      width: ((($width-basic - $customWidth - (2*$spacing-thirty))/2)/($width-basic + $spacing-thirty)*100%);
+      @if $type == left {
+        &:first-child { width: ($customWidth/($width-basic + $spacing-thirty)*100%);}
+      }
+      @else if $type == right {
+        &:last-child { width: ($customWidth/($width-basic + $spacing-thirty)*100%);}
+      }
+      @include breakpoint(medium-size) {
+        @if $type == left {
+          &:first-child {float: none; margin: 0 auto $spacing-twenty; width: ((($width-basic - ($spacing-twenty * 2))/2) / ($width-basic + $spacing-twenty))*100%}
+        }
+        @else if $type == right {
+          &:last-child {float: none; margin: 0 auto $spacing-twenty; clear: both; width: ((($width-basic - ($spacing-twenty * 2))/2) / ($width-basic + $spacing-twenty))*100%}
+        }
+        width: ((($width-basic - ($spacing-twenty * 2))/2) / ($width-basic + $spacing-twenty))*100%;
+        @content;
+      }
+      @include breakpoint(tiny-size) { width: 100% !important; margin-left: 0;}
+    }
+  }
+  @else if $boxes == 4 {
+    li {
+      width: ((($width-basic - $customWidth - (3*$spacing-thirty))/3)/($width-basic + $spacing-thirty)*100%);
+      @if $type == left {
+        &:first-child { width: ($customWidth/($width-basic + $spacing-thirty)*100%);}
+      }
+      @else if $type == right {
+        &:last-child { width: ($customWidth/($width-basic + $spacing-thirty)*100%);}
+      }
+      @include breakpoint(medium-size) {
+        @if $type == left {
+          &:first-child {float: none; margin: 0 auto $spacing-twenty; width: ((($width-basic - ($spacing-twenty * 2))/2) / ($width-basic + $spacing-twenty))*100%}
+        }
+        @else if $type == right {
+          &:last-child {float: none; margin: 0 auto $spacing-twenty; clear: both; width: ((($width-basic - ($spacing-twenty * 2))/2) / ($width-basic + $spacing-twenty))*100%}
+        }
+        width: ((($width-basic - ($spacing-twenty * 2))/2) / ($width-basic + $spacing-twenty))*100%;
+        @content;
+      }
+      @include breakpoint(tiny-size) { width: 100% !important; margin-left: 0;}
+    }
+  }
+}
+
+@mixin boxes($amount) {
+  margin-left: (-$spacing-thirty/$width-basic)*100% !important;
+  li {
+    float: left;
+    margin-left: ($spacing-thirty/($width-basic + $spacing-thirty))*100%;
+    @if $amount == 3 {
+      width: ((($width-basic - ($spacing-thirty*2))/3)/($width-basic + $spacing-thirty))*100%;
+    }
+    @else if $amount == 4 {
+      width: ((($width-basic - ($spacing-thirty*3))/4) / ($width-basic + $spacing-thirty))*100%;
+    }
+  }
+  @include breakpoint(medium-size) {
+    li {width: ((($width-basic - ($spacing-twenty * 2))/2) / ($width-basic + $spacing-twenty))*100%;}
+  }
+  @include breakpoint(tiny-size) {
+    li { width: 100%; margin-left: 0;}
+  }
+}

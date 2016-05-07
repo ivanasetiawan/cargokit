@@ -1,0 +1,61 @@
+//Smallest gutter, forced default
+$gutter: nth(nth($gutters,1),2);
+
+//All the breakpoints. Em's have a preference because of zooming
+$breakpoints: (
+	sm: em(500px,16px),
+	md: em(750px,16px),
+	lg: em(1020px,16px),
+	xl: em(1200px,16px)
+) !default;
+
+//Default container width. Reccomendation is a percentage
+$container-width: 100% !default;
+
+//Define max-widths for your container per breakpoint only neccesary for xl most of the time
+$container-maxwidth: (
+	lg: em(1020px),
+	xl: em(1200px)
+) !default;
+
+.container,
+%container {
+	max-width: map-get($container-maxwidth, lg);
+	margin: 0 auto;
+}
+
+.row,
+%row {
+	float: left;
+	width: 100%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.unit,
+%unit {
+	width: 100%;
+	float: left;
+	display: block;
+	box-sizing: border-box;
+	padding: {
+		left: $gutter * .5;
+		right: $gutter * .5;
+	}
+	> .unit,
+	> %unit {
+		padding: {
+			left: 0;
+			right: 0;
+		}
+	}
+}
+
+@for $i from 1 through $columns {
+	@media all and (min-width: map-get($breakpoints, lg)) {
+		.unit#{$i}of#{$columns} {
+			width: (100%/$columns) * $i;
+		}
+	}
+
+}

@@ -1,0 +1,119 @@
+$color-grey: #CED7DF; // border
+$radius: 3px;
+
+.title,
+%title,
+label,
+%label {
+	font-size: em(14px);
+	font-weight: 600;
+	display: block;
+}
+
+label,
+%label {
+	@media all and (min-width: map-get($breakpoints, md)) {
+		text-align: right;
+		line-height: em(46px);
+
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}
+
+%border-base {
+	border: solid 1px $color-grey;
+	border-radius: $radius;
+	height: rem(46px);
+	line-height: rem(46px);
+	margin: 0;
+	box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+	@extend %border-base;
+	width: 100%;
+	padding: {
+		left: $gutter;
+		right: $gutter;
+	}
+	background: transparent;
+}
+
+@mixin inputWithSelect($reservedSpace, $amountInputs:1) {
+	@media all and (min-width: map-get($breakpoints, md)) {
+		padding-right: $reservedSpace;
+		overflow: hidden;
+		> input {
+			width: 100%/$amountInputs;
+			box-sizing: border-box;
+			float: left;
+
+			&:not(:first-child) {
+				border-left: solid 1px $color-grey;
+			}
+		}
+		.custom-select {
+			width: $reservedSpace;
+		}
+	}
+}
+
+.multiple-inputs {
+	@extend %border-base;
+	position: relative;
+	input { border: none; }
+}
+
+@each $version in 20, 30, 40, 50 {
+	.multiple-inputs--select-#{$version} {
+		@include inputWithSelect(calc(#{$version}*1%));
+	}
+}
+
+.multiple-inputs--3inputs {
+	@include inputWithSelect(20%, 3);
+}
+
+.custom-select {
+	select {
+		border: 0;
+		background-color: #fff;
+		height: em(46px);
+		line-height: em(46px);
+	}
+
+	@media all and (min-width: map-get($breakpoints, md)) {
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-left: solid 1px $color-grey;
+
+		select {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+
+.total,
+.add-item {
+	display: block;
+	border-radius: $radius;
+	background: rgba(0,0,0,0.15);
+	line-height: em(46px);
+	padding: {
+		left: $gutter;
+		right: $gutter;
+	}
+}
+
+.form-shipment {
+	> .row { margin-bottom: $gutter; }
+}
