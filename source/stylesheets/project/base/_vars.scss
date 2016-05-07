@@ -19,6 +19,12 @@ $debug-level: 1 !default;
 // * GRID
 // *******************************************************************************
 //Smallest gutter, forced default
+$gutters: (
+	xs: 20px,
+	sm: 20px,
+	md: 30px,
+	lg: 60px
+);
 $gutter: nth(nth($gutters,1),2);
 
 //Default container width. Reccomendation is a percentage
@@ -31,12 +37,7 @@ $breakpoints: (
 	lg: em(1020px,16px),
 	xl: em(1200px,16px)
 );
-$gutters: (
-	xs: 20px,
-	sm: 20px,
-	md: 30px,
-	lg: 60px
-);
+
 $container-maxwidth: (
 	lg: em(1020px)
 );

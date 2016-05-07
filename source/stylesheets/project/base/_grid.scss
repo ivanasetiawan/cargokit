@@ -38,11 +38,6 @@ $container-maxwidth: (
 }
 
 @for $i from 1 through $columns {
-	@media all and (min-width: map-get($breakpoints, sm)) {
-		.unit#{$i}of#{$columns} {
-			background:
-		}
-	}
 	@media all and (min-width: map-get($breakpoints, lg)) {
 		.unit#{$i}of#{$columns} {
 			width: (100%/$columns) * $i;

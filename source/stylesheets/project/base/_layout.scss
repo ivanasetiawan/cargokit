@@ -22,10 +22,10 @@ body:after {
 // *******************************************************************************
 %hide {display: none;}
 %show {display: block;}
-@each $bp, $width in $breakpoints {
-	.#{$bp}-show {@extend %hide;}
-	@include bp($width) {
-		.#{$bp}-show { display: block;}
-		.#{$bp}-hide { display: none;}
-	}
-}
+// @each $bp, $width in $breakpoints {
+// 	.#{$bp}-show {@extend %hide;}
+// 	@include bp($width) {
+// 		.#{$bp}-show { display: block;}
+// 		.#{$bp}-hide { display: none;}
+// 	}
+// }
