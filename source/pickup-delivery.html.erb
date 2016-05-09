@@ -1,0 +1,119 @@
+---
+title: CargoKit
+---
+<main class="container sm-pt-2 sm-pb-2">
+	<h1 class="h3">Create quote request</h1>
+	<ul class="list-reset sm-mt-2 sm-mb-2 lg-mt-3 lg-mb-3 shipment-steps">
+		<li><a href="" class="passed">Shipment details</a></li>
+		<li><a href="" class="active">Pickup and Delivery</a></li>
+		<li><span>Invite providers</span></li>
+	</ul>
+	<form class="form-shipment">
+		<div class="row sm-pt-1 sm-pb-1">
+			<label class="sm-12 lg-3">
+				Pickup location
+			</label>
+			<div class="sm-12 md-6 lg-6">
+				<input type="text" placeholder="Search address or airport…"></input>
+			</div>
+		</div>
+
+		<div class="row sm-pt-1 sm-pb-1">
+			<label class="sm-12 lg-3">
+				<span>Pickup time</span>
+			</label>
+			<div class="sm-12 md-6 lg-6">
+				<div class="multiple-inputs multiple-inputs--select-30">
+					<input type="text" placeholder="Select date and time"></input>
+					<div class="custom-select">
+						<select data-custom-select>
+							<option>IST (GMT +05:30)</option>
+							<option>IST (GMT +05:30)</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row sm-pt-1 sm-pb-1">
+			<label class="sm-12 lg-3">
+				<span>Goods description</span>
+			</label>
+			<div class="sm-12 md-6 lg-3">
+				<input type="text" placeholder="e.g. 'Machine parts'"></input>
+			</div>
+		</div>
+
+		<div class="item-has-rows sm-pt-1 sm-pb-1">
+			<div class="row">
+				<label class="sm-12 lg-3">
+					<span>Item 1</span>
+				</label>
+				<div class="sm-12 lg-9">
+					<div class="multiple-inputs multiple-inputs--select-40">
+						<input type="text" placeholder="Units"></input>
+						<div class="custom-select">
+							<select data-custom-select>
+								<option>Containers</option>
+								<option>EUR</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row has-subs">
+				<label class="sm-hide lg-show lg-3">
+					<span></span>
+				</label>
+				<div class="sm-12 lg-4">
+					<div class="multiple-inputs multiple-inputs--3inputs">
+						<input type="text" placeholder="Length"></input>
+						<input type="text" placeholder="Height"></input>
+						<input type="text" placeholder="Height"></input>
+						<div class="custom-select">
+							<select data-custom-select>
+								<option>cm</option>
+								<option>mm</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="sm-12 md-6 lg-3">
+					<div class="multiple-inputs multiple-inputs--select-40">
+						<input type="text" placeholder="Weight"></input>
+						<div class="custom-select">
+							<select data-custom-select>
+								<option>Lbs</option>
+								<option>kg</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="sm-12 md-6 lg-2">
+					<div class="total">
+						Total: <em>240 Lbs</em>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<label class="sm-hide lg-show lg-3">
+					<span></span>
+				</label>
+				<div class="sm-12 lg-9">
+					<a href="" class="add-item" data-add-item><i>+</i> Add item</a>
+
+					<hr class="sm-mt-1 md-mt-2 md-mb-2 lg-mt-3 lg-mb-3">
+				</div>
+			</div>
+
+		</div>
+
+		<button type="submit" class="button right">
+			Next:
+			<em>Pickup and Delivery</em>
+		</button>
+	</form>
+</main>

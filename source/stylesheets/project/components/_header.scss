@@ -25,8 +25,23 @@
 	&__menu {
 		display: none;
 		li { margin-bottom: 0; }
+		a { display: block; }
 		@include bp('md+') {
+			display: block;
+			overflow: hidden;
+			a {
+				opacity: 0.4;
+				text-transform: uppercase;
+				font-weight: 700;
+				line-height: em(33px);
+				transition: opacity 0.2s;
+				&:hover,
+				&.active {
+					opacity: 1;
+				}
+			}
 			li {
+				padding: 0 em(20px);
 				float: left;
 			}
 		}
