@@ -1,0 +1,143 @@
+---
+title: CargoKit
+---
+
+<section class="container">
+%article.theme--bluelight
+	.container
+		.row.xs-pt-1.xs-pb-1
+			%ul.xs-12.lg-8.breadcrumb
+				%li= link_to "Home", "#"
+				%li= link_to "Koopwoningen", "#"
+				%li= link_to "Noord-Holland", "#"
+				%li= link_to "Amsterdam", "#"
+				%li= link_to "Jordaan", "#"
+
+			.xs-12.lg-4= link_to "Ga terug naar zoekresultaat", "#", :class => "go-back"
+	<form class="form-shipment">
+		<div class="row">
+			<label class="unit unit2of12">
+				&nbsp;
+			</label>
+			<div class="unit unit10of12">
+				<div class="unit unit4of12">
+					<span class='title'>Shipment title</span>
+					<input type="text" placeholder="e.g. 'invoice number'"></input>
+				</div>
+				<div class="unit unit4of12">
+					<span class='title'>Cost center</span>
+					<input type="text" placeholder="Search..."></input>
+				</div>
+				<div class="unit unit4of12">
+					<span class='title'>Location</span>
+					<input type="text" placeholder="Shanghai"></input>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<label class="unit unit2of12">
+				<span>Goods value</span>
+			</label>
+			<div class="unit unit10of12">
+				<div class="unit unit4of12">
+					<div class="multiple-inputs multiple-inputs--select-30">
+						<input type="text" placeholder="Amount"></input>
+						<div class="custom-select">
+							<select data-custom-select>
+								<option>USD</option>
+								<option>EUR</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<label class="unit unit2of12">
+				<span>Goods description</span>
+			</label>
+			<div class="unit unit10of12">
+				<div class="unit">
+					<input type="text" placeholder="e.g. 'Machine parts'"></input>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<label class="unit unit2of12">
+				<span>Item 1</span>
+			</label>
+			<div class="unit unit10of12">
+				<div class="unit unit4of12">
+					<div class="multiple-inputs multiple-inputs--select-40">
+						<input type="text" placeholder="Units"></input>
+						<div class="custom-select">
+							<select data-custom-select>
+								<option>Containers</option>
+								<option>EUR</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<label class="unit unit2of12">
+				<span></span>
+			</label>
+			<div class="unit unit10of12">
+				<div class="unit unit6of12">
+					<div class="multiple-inputs multiple-inputs--3inputs">
+						<input type="text" placeholder="Length"></input>
+						<input type="text" placeholder="Height"></input>
+						<input type="text" placeholder="Height"></input>
+						<div class="custom-select">
+							<select data-custom-select>
+								<option>cm</option>
+								<option>mm</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="unit unit3of12">
+					<div class="multiple-inputs multiple-inputs--select-40">
+						<input type="text" placeholder="Weight"></input>
+						<div class="custom-select">
+							<select data-custom-select>
+								<option>Lbs</option>
+								<option>kg</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="unit unit3of12">
+					<div class="total">
+						Total: <em>240 Lbs</em>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<label class="unit unit2of12">
+				<span></span>
+			</label>
+			<div class="unit unit10of12">
+				<div class="unit">
+					<a href="" class="add-item" data-add-item><i>+</i> Add item</a>
+				</div>
+			</div>
+<!-- 			<input type="radio">Stackable</input>
+			<input type="radio">Hazardous</input>
+			<input type="radio">Pallet removeable</input>
+			<a href=""><i></i>Additional information</a> -->
+		</div>
+
+
+	</form>
+</section>

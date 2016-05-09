@@ -1,0 +1,48 @@
+.pagination {
+  overflow: hidden;
+  margin: 0 auto 4em;
+  position: relative;
+  &__item {
+    $size: 30px;
+    width: $size;
+    height: $size;
+    line-height: $size;
+    border: 2px solid cl("grey-medium");
+    text-align: center;
+    margin: 0 1px 5px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    @include bp("sm+") {
+      $size: 40px;
+      width: $size;
+      height: $size;
+      line-height: 35px;
+      margin: 0 5px;
+    }
+    a { 
+      color: cl("black");
+      display: block;
+    }
+    &.is-active,
+    &:hover { 
+      border: 2px solid cl("funda-blue-light");
+      a { color: cl("funda-blue-light"); }
+    }
+    &--button { 
+      border-color: cl("funda-blue-light");
+      width: auto;
+      background-color: cl("funda-blue-light");
+      transition: background-color 0.2s;
+      
+      a { 
+        color: cl("white");
+        padding: 0 15px;
+      }
+
+      &:hover { 
+        background-color: cl("funda-blue-dark"); 
+        a { color: cl("white"); }
+      }
+    }
+  }
+}
