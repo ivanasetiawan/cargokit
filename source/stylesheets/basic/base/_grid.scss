@@ -1,29 +1,29 @@
-//How many columns there should be
-$columns: 4 !default;
+// //How many columns there should be
+// $columns: 4 !default;
 
-//Overrides the gutter width on a certain breakpoint
-$gutters: (
-	xs: 10px
-) !default;
+// //Overrides the gutter width on a certain breakpoint
+// $gutters: (
+// 	xs: 10px
+// ) !default;
 
-//Smallest gutter, forced default
-$gutter: nth(nth($gutters,1),2);
+// //Smallest gutter, forced default
+// $gutter: nth(nth($gutters,1),2);
 
-//All the breakpoints. Em's have a preference because of zooming
-$breakpoints: (
-	xs: em(300px,16px),
-	sm: em(500px,16px),
-	md: em(700px,16px),
-	lg: em(900px,16px),
-	xl: em(1200px,16px)
-) !default;
-//Default container width. Reccomendation is a percentage
-$container-width: 100% !default;
+// //All the breakpoints. Em's have a preference because of zooming
+// $breakpoints: (
+// 	xs: em(300px,16px),
+// 	sm: em(500px,16px),
+// 	md: em(700px,16px),
+// 	lg: em(900px,16px),
+// 	xl: em(1200px,16px)
+// ) !default;
+// //Default container width. Reccomendation is a percentage
+// $container-width: 100% !default;
 
-//Define max-widths for your container per breakpoint only neccesary for xl most of the time
-$container-maxwidth: (
-	xl: em(1200px)
-) !default;
+// //Define max-widths for your container per breakpoint only neccesary for xl most of the time
+// $container-maxwidth: (
+// 	xl: em(1200px)
+// ) !default;
 
 
 // *******************************************************************************

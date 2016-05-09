@@ -4,6 +4,8 @@ $compile: (
 	spacing: true
 ) !default;
 
+$radius: 3px;
+
 // *******************************************************************************
 // * TYPOGRAPHY
 // *******************************************************************************
@@ -54,9 +56,10 @@ $spacing-properties: (
 );
 
 $spacing-distance: (
-	xs: 20px,
-	sm: 30px,
-	md: 40px,
+	sm: 10px,
+	md: 20px,
+	lg: 30px,
+	xl: 30px
 );
 
 // $spacing-distance: 20px;
@@ -68,8 +71,8 @@ $spacing-distance: (
 //<"grey_light": #f4f2eb true>
 //generates a class called bg-grey_light with a bg color
 $colors: (
-
 	"blue": #1E7FF0,
+	"blue-dark": #0070CD,
 	"grey-light": #CED7DF,
 
 	"black": #1e1e1c true,

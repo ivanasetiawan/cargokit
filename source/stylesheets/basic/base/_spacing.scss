@@ -41,14 +41,14 @@ $prevGutter: nth(nth($gutters, 1), 2); // ''; //Stores previous gutter width in 
 		//we only add the current bp selector. If it's not, let the previous styles stand
 		@if length($spacing-distance) == 1 {
 			//convert single-value to map set to xss
-			$spacing-distance: ( 
-				xs: $spacing-distance 
+			$spacing-distance: (
+				xs: $spacing-distance
 			);
 		}
 		$currGutter: if(map-get($spacing-distance, $bp), map-get($spacing-distance, $bp), $prevGutter);
 		//Determines if the silent classes are used or not, use the compile flag in your vars
 		$prefix: if(map-get($compile, spacing), '.', '%');
-		
+
 		//Loops through every previous breakpoint
 		@each $shorthand, $property in ($spacing-properties) {
 			//First do the previous breakpoints
@@ -58,7 +58,7 @@ $prevGutter: nth(nth($gutters, 1), 2); // ''; //Stores previous gutter width in 
 				//the spacing to have the possibility to be variable
 				@for $i from 1 through length($spacing-multiplier) {
 					$selector: '';
-					
+
 					@each $key in $keys {
 						//Since we add the current breakpoint later, skip it in the selector
 						//This fixes problems with inheritence
