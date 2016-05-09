@@ -1,0 +1,34 @@
+.mainheader {
+	background: cl('blue');
+	padding: em(10px) 0;
+
+	a { color: cl('white'); }
+
+	&__logo {
+		width: em(30px);
+		height: 0;
+		display: block;
+		overflow: hidden;
+		padding-top: em(33px);
+		background: image-url("images/logo.png") center no-repeat;
+		float: left;
+	}
+
+	&__hamburger {
+		float: right;
+		line-height: em(32px);
+		@include bp('md+') {
+			display: none;
+		}
+	}
+
+	&__menu {
+		display: none;
+		li { margin-bottom: 0; }
+		@include bp('md+') {
+			li {
+				float: left;
+			}
+		}
+	}
+}

@@ -33,7 +33,8 @@
 @import "basic/base/layout"; //utility classes that help with the layout
 
 @import "project/base/fonts";
-// @import "project/base/grid";
-@import "project/base/layout";
 @import "project/base/typography";
+
+@import "project/components/header";
 @import "project/components/forms";
+@import "project/components/buttons";

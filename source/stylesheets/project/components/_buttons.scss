@@ -1,0 +1,15 @@
+.button,
+%button {
+	background: cl('green');
+	display: inline-block;
+	border-radius: $radius;
+	border: 0;
+	color: cl('white');
+	line-height: 1;
+	padding: em(15px);
+
+	em {
+		font-style: normal;
+		font-weight: 800;
+	}
+}

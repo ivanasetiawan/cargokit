@@ -56,7 +56,7 @@ $spacing-properties: (
 );
 
 $spacing-distance: (
-	sm: 10px,
+	sm: 20px,
 	md: 20px,
 	lg: 30px,
 	xl: 30px
@@ -72,8 +72,12 @@ $spacing-distance: (
 //generates a class called bg-grey_light with a bg color
 $colors: (
 	"blue": #1E7FF0,
+	"blue-darkest": #324256,
 	"blue-dark": #0070CD,
+	"blue-light": #AAB7C4,
+	"blue-lightest": #F0F3F6,
 	"grey-light": #CED7DF,
+	"green": #02D04E,
 
 	"black": #1e1e1c true,
 	"white": #ffffff true,

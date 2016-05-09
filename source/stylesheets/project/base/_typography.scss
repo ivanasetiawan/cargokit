@@ -1,7 +1,6 @@
 body {
 	font-family: $font-sans-serif;
 	font-size: em($font-size-default, 16px);
-	font-weight: 300;
 	line-height: 1.75em;
 	-webkit-font-smoothing: antialiased;
 }
@@ -11,15 +10,8 @@ h1, h2, h3, h4, h5, h6,
 	font-weight: 600;
 	line-height: 1.3em;
 	margin: 0 0 .5em;
-
-	+ .subheader {
-		margin-top: -.5em;
-	}
+	font-weight: 300;
 }
-
-// h4, h5, h6, .h4, .h5, .h6 {
-// 	font-weight: 600;
-// }
 
 .h1, h1 {
 	font-size: em(32px);
@@ -37,7 +29,6 @@ h1, h2, h3, h4, h5, h6,
 	font-size: em(16px);
 	@include bp("sm+") { font-size: em(20px); }
 }
-
 
 ul {
 	padding-left: 1em;
