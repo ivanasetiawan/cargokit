@@ -1,0 +1,1 @@
+$(document).ready(function(){var t="[data-custom-select]";$(t).change(function(){var t="";t=$(this).find(":selected").text(),$(this).next(".out").text(t)}).trigger("change")});
