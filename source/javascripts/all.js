@@ -1,9 +1,14 @@
 // This is where it all goes :)
 $(document).ready(function () {
-	var isCustomSelect = '[data-custom-select]';
-    $(isCustomSelect).change(function () {
-        var str = "";
-        str = $(this).find(":selected").text();
-        $(this).next(".out").text(str);
-    }).trigger('change');
+
+	// Focus on parent div
+	if ($('[data-get-focus]').length) {
+		$('[data-get-focus]').focus(
+		    function(){
+		        $(this).parent('div').addClass('focusing');
+		    }).blur(
+		    function(){
+		        $(this).parent('div').removeClass('focusing');
+		    });
+	}
 })

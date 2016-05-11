@@ -7,9 +7,14 @@
 	color: cl('white');
 	line-height: 1;
 	padding: em(15px);
+	transition: background 0.2s;
 
 	em {
 		font-style: normal;
 		font-weight: 800;
+	}
+
+	&:hover {
+		background: darken(cl('green'), 10%);;
 	}
 }

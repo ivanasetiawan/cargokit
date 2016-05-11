@@ -33,12 +33,14 @@ title: CargoKit
 			</label>
 			<div class="sm-12 md-6 lg-4">
 				<div class="multiple-inputs multiple-inputs--select-30">
-					<input type="text" placeholder="Amount"></input>
+					<input type="text" placeholder="Amount" data-get-focus></input>
 					<div class="custom-select">
-						<select data-custom-select>
-							<option>USD</option>
-							<option>EUR</option>
-						</select>
+					 	<select>
+							<option value="USD">USD</option>
+							<option value="EUR">EUR</option>
+							<option value="SGD">SGD</option>
+							<option value="AUD">AUD</option>
+					 	</select>
 					</div>
 				</div>
 			</div>
@@ -60,12 +62,12 @@ title: CargoKit
 				</label>
 				<div class="sm-12 lg-9">
 					<div class="multiple-inputs multiple-inputs--select-40">
-						<input type="text" placeholder="Units"></input>
+						<input type="text" placeholder="Units" data-get-focus></input>
 						<div class="custom-select">
-							<select data-custom-select>
-								<option>Containers</option>
-								<option>EUR</option>
-							</select>
+						 	<select>
+								<option value="container">Container</option>
+								<option value="package">Package</option>
+						 	</select>
 						</div>
 					</div>
 				</div>
@@ -77,25 +79,25 @@ title: CargoKit
 				</label>
 				<div class="sm-12 lg-4">
 					<div class="multiple-inputs multiple-inputs--3inputs">
-						<input type="text" placeholder="Length"></input>
-						<input type="text" placeholder="Height"></input>
-						<input type="text" placeholder="Height"></input>
+						<input type="text" placeholder="Length" data-get-focus></input>
+						<input type="text" placeholder="Height" data-get-focus></input>
+						<input type="text" placeholder="Height" data-get-focus></input>
 						<div class="custom-select">
-							<select data-custom-select>
-								<option>cm</option>
-								<option>mm</option>
-							</select>
+						 	<select>
+								<option value="cm">cm</option>
+								<option value="mm">mm</option>
+						 	</select>
 						</div>
 					</div>
 				</div>
 				<div class="sm-12 md-6 lg-3">
 					<div class="multiple-inputs multiple-inputs--select-40">
-						<input type="text" placeholder="Weight"></input>
+						<input type="text" placeholder="Weight" data-get-focus></input>
 						<div class="custom-select">
-							<select data-custom-select>
-								<option>Lbs</option>
-								<option>kg</option>
-							</select>
+						 	<select>
+								<option value="Lbs">Lbs</option>
+								<option value="kg">kg</option>
+						 	</select>
 						</div>
 					</div>
 				</div>
