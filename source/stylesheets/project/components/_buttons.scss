@@ -15,6 +15,7 @@
 	}
 
 	&:hover {
+		color: cl('white');
 		background: darken(cl('green'), 10%);;
 	}
 }
