@@ -1,1 +1,1 @@
-$(document).ready(function(){var t="[data-custom-select]";$(t).change(function(){var t="";t=$(this).find(":selected").text(),$(this).next(".out").text(t)}).trigger("change")});
+$(document).ready(function(){$("[data-get-focus]").length&&$("[data-get-focus]").focus(function(){$(this).parent("div").addClass("focusing")}).blur(function(){$(this).parent("div").removeClass("focusing")})});
