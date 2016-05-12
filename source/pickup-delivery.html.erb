@@ -11,10 +11,15 @@ title: CargoKit
 	<form class="form-shipment">
 		<div class="row sm-pt-1 sm-pb-1">
 			<label class="sm-12 lg-3">
-				Pickup location
+				<span>Pickup location</span>
 			</label>
-			<div class="sm-12 md-6 lg-6">
-				<input type="text" placeholder="Search address or airport…"></input>
+			<div class="sm-12 md-6">
+				<div class="custom-select custom-select--independent">
+					<select data-custom-select>
+						<option>IST (GMT +05:30)</option>
+						<option>IST (GMT +05:30)</option>
+					</select>
+				</div>
 			</div>
 		</div>
 
@@ -23,9 +28,14 @@ title: CargoKit
 				<span>Pickup time</span>
 			</label>
 			<div class="sm-12 md-6 lg-6">
-				<div class="multiple-inputs multiple-inputs--select-30">
-					<input type="text" placeholder="Select date and time"></input>
-					<div class="custom-select">
+				<div class="multiple-inputs">
+					<div class="custom-select md-6 has-border-right">
+						<select data-custom-select>
+							<option>Select date and time</option>
+							<option>Select date and time</option>
+						</select>
+					</div>
+					<div class="custom-select md-6">
 						<select data-custom-select>
 							<option>IST (GMT +05:30)</option>
 							<option>IST (GMT +05:30)</option>
@@ -37,83 +47,80 @@ title: CargoKit
 
 		<div class="row sm-pt-1 sm-pb-1">
 			<label class="sm-12 lg-3">
-				<span>Goods description</span>
+				<span>Delivery location</span>
+			</label>
+			<div class="sm-12 md-6">
+				<div class="custom-select custom-select--independent">
+					<select data-custom-select>
+						<option>Search address or airport</option>
+						<option>Amsterdam</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="row sm-pt-1 sm-pb-1">
+			<label class="sm-12 lg-3">
+				<span>Delivery deadline</span>
+			</label>
+			<div class="sm-12 md-6 lg-6">
+				<div class="multiple-inputs">
+					<div class="custom-select md-6 has-border-right">
+						<select data-custom-select>
+							<option>Select date and time</option>
+							<option>Select date and time</option>
+						</select>
+					</div>
+					<div class="custom-select md-6">
+						<select data-custom-select>
+							<option>IST (GMT +05:30)</option>
+							<option>IST (GMT +05:30)</option>
+						</select>
+					</div>
+				</div>
+				<ul class="list-reset form__options">
+					<li><a href="">Fixed date and time</a></li>
+					<li><a href="">Flexible</a></li>
+					<li><a href="">ASAP</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row sm-pt-1 sm-pb-1">
+			<label class="sm-12 lg-3">
+				<span>Custom clearance</span>
 			</label>
 			<div class="sm-12 md-6 lg-3">
-				<input type="text" placeholder="e.g. 'Machine parts'"></input>
+				<a href="">Export clearance</a>
+			</div>
+			<div class="sm-12 md-6 lg-3">
+				<a href="">Transit clearance</a>
+			</div>
+			<div class="sm-12 md-6 lg-3">
+				<a href="">Import clearance</a>
 			</div>
 		</div>
 
-		<div class="item-has-rows sm-pt-1 sm-pb-1">
-			<div class="row">
-				<label class="sm-12 lg-3">
-					<span>Item 1</span>
-				</label>
-				<div class="sm-12 lg-9">
-					<div class="multiple-inputs multiple-inputs--select-40">
-						<input type="text" placeholder="Units"></input>
-						<div class="custom-select">
-							<select data-custom-select>
-								<option>Containers</option>
-								<option>EUR</option>
-							</select>
-						</div>
-					</div>
+		<div class="row sm-pt-1 sm-pb-1">
+			<label class="sm-12 lg-3">
+				<span>Attachments</span>
+			</label>
+			<div class="sm-12 md-6">
+				<div class="custom-select custom-select--independent">
+					<select data-custom-select>
+						<option>IST (GMT +05:30)</option>
+						<option>IST (GMT +05:30)</option>
+					</select>
 				</div>
 			</div>
-
-			<div class="row has-subs">
-				<label class="sm-hide lg-show lg-3">
-					<span></span>
-				</label>
-				<div class="sm-12 lg-4">
-					<div class="multiple-inputs multiple-inputs--3inputs">
-						<input type="text" placeholder="Length"></input>
-						<input type="text" placeholder="Height"></input>
-						<input type="text" placeholder="Height"></input>
-						<div class="custom-select">
-							<select data-custom-select>
-								<option>cm</option>
-								<option>mm</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="sm-12 md-6 lg-3">
-					<div class="multiple-inputs multiple-inputs--select-40">
-						<input type="text" placeholder="Weight"></input>
-						<div class="custom-select">
-							<select data-custom-select>
-								<option>Lbs</option>
-								<option>kg</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
-				<div class="sm-12 md-6 lg-2">
-					<div class="total">
-						Total: <em>240 Lbs</em>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<label class="sm-hide lg-show lg-3">
-					<span></span>
-				</label>
-				<div class="sm-12 lg-9">
-					<a href="" class="add-item" data-add-item><i>+</i> Add item</a>
-
-					<hr class="sm-mt-1 md-mt-2 md-mb-2 lg-mt-3 lg-mb-3">
-				</div>
-			</div>
-
 		</div>
 
-		<button type="submit" class="button right">
-			Next:
-			<em>Pickup and Delivery</em>
-		</button>
+		<footer class="form__footer">
+			<hr class="sm-mt-1 md-mt-2 md-mb-2 lg-mt-3 lg-mb-3">
+			<button type="submit" class="button right">
+				Next:
+				<em>Invite providers</em>
+			</button>
+		</footer>
 	</form>
 </main>

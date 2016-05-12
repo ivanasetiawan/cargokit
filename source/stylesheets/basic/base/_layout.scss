@@ -87,6 +87,21 @@ hr {
 	background: cl('blue-lightest');
 }
 
+.is-relative,
+%is-relative {
+	position: relative;
+}
+
+.has-border-right,
+%has-border-right {
+	border-right: solid 1px cl('grey-light');
+}
+
+.has-border-left,
+%has-border-left {
+	border-left: solid 1px cl('grey-light');
+}
+
 // *******************************************************************************
 // * SHOW/HIDE
 // *******************************************************************************

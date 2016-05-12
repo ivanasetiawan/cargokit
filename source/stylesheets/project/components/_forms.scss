@@ -61,6 +61,7 @@ input[type='password'] {
 @mixin inputWithSelect($reservedSpace, $amountInputs:1) {
 	padding-right: $reservedSpace;
 	overflow: hidden;
+
 	> input {
 		width: 100%/$amountInputs;
 		box-sizing: border-box;
@@ -70,8 +71,15 @@ input[type='password'] {
 			border-left: solid 1px cl('grey-light');
 		}
 	}
+
 	.custom-select {
 		width: $reservedSpace;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-left: solid 1px cl('grey-light');
+		overflow: hidden;
 	}
 }
 
@@ -93,13 +101,7 @@ input[type='password'] {
 }
 
 .custom-select {
-	height: 100%;
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-left: solid 1px cl('grey-light');
-	overflow: hidden;
-
+	position: relative;
 	&:after {
 		content: '';
 		display: block;
@@ -125,6 +127,10 @@ input[type='password'] {
 		-webkit-appearance: none;
 		   -moz-appearance: none;
 				appearance: none;
+	}
+
+	&--independent {
+		@extend %border-base;
 	}
 }
 
@@ -223,6 +229,8 @@ input[type='password'] {
 }
 
 .form-shipment {
-	> .row > .md-6 { padding-top: em(10px); }
+	@include bp('lg-') {
+		> .row > .md-6 { padding-top: em(10px); }
+	}
 }
 ////////
