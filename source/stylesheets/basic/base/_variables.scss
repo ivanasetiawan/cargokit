@@ -68,20 +68,21 @@ $spacing-distance: (
 // * COLOURS
 // *******************************************************************************
 //after the hex, add a true to enable it in the output
-//<"grey_light": #f4f2eb true>
+//<'grey_light': #f4f2eb true>
 //generates a class called bg-grey_light with a bg color
 $colors: (
-	"blue": #1E7FF0,
-	"blue-darkest": #324256,
-	"blue-dark": #0070CD,
-	"blue-light": #AAB7C4,
-	"blue-lightest": #F0F3F6,
-	"grey-light": #CED7DF,
-	"green": #02D04E,
+	'blue': #1E7FF0,
+	'blue-darkest': #324256,
+	'blue-dark': #0070CD,
+	'blue-light': #AAB7C4,
+	'blue-lightest': #F0F3F6,
+	'grey-light': #CED7DF,
+	'grey-light-font': #A7B5C2,
+	'green': #02D04E,
 
-	"black": #1e1e1c true,
-	"white": #ffffff true,
-	"grey-dark": #474949,
-	"grey-text": #8e8e8e,
-	"grey-medium": #e2e2e2
+	'black': #1e1e1c true,
+	'white': #ffffff true,
+	'grey-dark': #474949,
+	'grey-text': #8e8e8e,
+	'grey-medium': #e2e2e2
 );

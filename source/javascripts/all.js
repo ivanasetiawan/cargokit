@@ -5,10 +5,10 @@ $(document).ready(function () {
 	if ($('[data-get-focus]').length) {
 		$('[data-get-focus]').focus(
 		    function(){
-		        $(this).parent('div').addClass('focusing');
+		        $(this).parents('[data-get-focus-parent]').addClass('focusing');
 		    }).blur(
 		    function(){
-		        $(this).parent('div').removeClass('focusing');
+		        $(this).parents('[data-get-focus-parent]').removeClass('focusing');
 		    });
 	}
 })
