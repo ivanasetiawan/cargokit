@@ -1,52 +1,53 @@
-.js .inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-.inputfile + label {
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    @extend %border-base;
-    @include focusing('element');
-    span {
-        text-align: left;
+.inputfile {
+    + label {
+        @extend %border-base;
+        @include focusing('element');
         width: 100%;
-        display: block;
-        padding: 0 em(10px);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        color: cl('grey-light-font');
+        position: relative;
+
+        span {
+            text-align: left;
+            width: 100%;
+            display: block;
+            padding: 0 em(10px);
+        }
+
+        svg {
+            width: 1.3em;
+            height: 1.3em;
+            fill: currentColor;
+            position: absolute;
+            top: em(10px);
+            right: em(10px);
+        }
+    }
+
+    &:focus + label,
+    &.has-focus + label {
+        outline: none;
+        border-color: cl('blue');
+    }
+
+    @at-root .js & {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    @at-root .no-js & + label {
+        display: none;
     }
 }
 
-.no-js .inputfile + label {
-    display: none;
-}
-
-.inputfile:focus + label,
-.inputfile.has-focus + label {
-    outline: none;
-    border-color: cl('blue');
-}
-
-.inputfile + label svg {
-    width: 1.3em;
-    height: 1.3em;
-    fill: currentColor;
-    position: absolute;
-    top: em(10px);
-    right: em(10px);
-}
-
-.inputfile-1 + label {
-    color: cl('grey-light-font');
-    position: relative;
-}
 
 .inputfile-1:focus + label,
 .inputfile-1.has-focus + label,

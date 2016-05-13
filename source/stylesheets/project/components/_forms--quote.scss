@@ -80,43 +80,31 @@
 	font-weight: 600;
 	font-size: em(11px);
 
+	li {
+		display: inline-block;
+		margin-right: em(10px);
+	}
+
 	a {
 		display: block;
 		color: cl('grey-light-font');
 		padding: rem(5px) rem(10px);
 		border: solid 1px cl('grey-light');
 		transition: color 0.2s, border-color 0.25s;
-		border-left: transparent;
-		border-right: transparent;
-	}
-
-	li {
-		float: left;
-		margin: 0;
-		&:first-child a {
-			border-radius: $radius 0 0 $radius;
-			border: solid 1px cl('grey-light');
+		border-radius: $radius;
+		font-weight: 700;
+		&:hover {
+			border-color: cl('blue');
+			color: cl('blue');
 		}
-		&:last-child a {
-			border-radius: 0 $radius $radius 0;
-			border: solid 1px cl('grey-light');
-		}
-		// &:first-child,
-		// &:last-child {
-		// 	a.active,
-		// 	a:hover { border-color: cl('blue'); }
-		// }
-
-		// &:not(:last-child) {
-		// 	a.active,
-		// 	a:hover {
-		// 		background-color: red;
-		// 		color: cl('blue');
-		// 		border: solid 1px cl('blue');
-		// 		margin: 0 -1px;
-		// 	}
-		// }
 	}
+}
+
+.link--hint {
+	border-color: transparent !important;
+	padding: 0 !important;
+	font-weight: 700;
+	i { margin-right: em(10px); }
 }
 
 .shipment-steps {
@@ -185,6 +173,14 @@
 		left: $gutter;
 		right: $gutter;
 	}
+	em {
+		font-style: normal;
+		font-weight: 700;
+	}
+}
+
+.total {
+	color: cl('blue-darkest');
 }
 
 .add-item {
@@ -194,8 +190,6 @@
 	}
 
 	i {
-		font-weight: 600;
-		font-size: em(20px);
 		margin-right: em(10px, 20px);
 	}
 }
