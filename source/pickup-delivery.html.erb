@@ -9,7 +9,7 @@ title: CargoKit
 		<li><span>Invite providers</span></li>
 	</ul>
 	<form class="form-shipment">
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Pickup location</span>
 			</label>
@@ -23,7 +23,7 @@ title: CargoKit
 			</div>
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Pickup time</span>
 			</label>
@@ -45,26 +45,27 @@ title: CargoKit
 			</div>
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
-			<a href="" class="link--hint"><i class="fa fa-info" aria-hidden="true"></i>Additional information</a>
+		<div class="row sm-pb-1 link--hint-parent">
 			<label class="sm-12 lg-2">
 				<span>Delivery location</span>
 			</label>
-			<div class="sm-12 md-8 lg-6">
+			<div class="sm-12 lg-10">
 				<div class="custom-select custom-select--independent" data-get-focus-parent>
 					<select data-custom-select data-get-focus>
 						<option>Search address or airport</option>
 						<option>Amsterdam</option>
 					</select>
 				</div>
+				<a href="" class="link--hint"><i class="fa fa-info" aria-hidden="true"></i>Show address form</a>
 			</div>
+
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Delivery deadline</span>
 			</label>
-			<div class="sm-12 md-8 lg-6">
+			<div class="sm-12 lg-6">
 				<div class="multiple-inputs" data-get-focus-parent>
 					<div class="custom-select sm-6 has-border-right">
 						<select data-custom-select data-get-focus>
@@ -80,30 +81,30 @@ title: CargoKit
 					</div>
 				</div>
 				<ul class="list-reset form__options sm-pt-1">
-					<li><a href="" class="">Fixed date and time</a></li>
+					<li><a href="" class="active">Fixed date and time</a></li>
 					<li><a href="">Flexible</a></li>
 					<li><a href="">ASAP</a></li>
 				</ul>
 			</div>
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Custom clearance</span>
 			</label>
-			<div class="sm-12 md-6 lg-3">
+			<div class="sm-12 md-4 lg-3">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-ship fa-3x" aria-hidden="true"></i>
 					Export clearance
 				</a>
 			</div>
-			<div class="sm-12 md-6 lg-3">
+			<div class="sm-12 md-4 lg-3">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-plane fa-3x" aria-hidden="true"></i>
 					Transit clearance
 				</a>
 			</div>
-			<div class="sm-12 md-6 lg-3">
+			<div class="sm-12 md-4 lg-3">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-rocket fa-3x" aria-hidden="true"></i>
 					Import clearance
@@ -111,11 +112,11 @@ title: CargoKit
 			</div>
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Attachments</span>
 			</label>
-			<div class="sm-12 md-8 lg-6">
+			<div class="sm-12 lg-6">
 				<div class="box">
 					<input type="file" name="file-1[]" id="file-1" class="inputfile" data-multiple-caption="{count} files selected" multiple />
 					<label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Choose a file&hellip;</span></label>
@@ -123,35 +124,35 @@ title: CargoKit
 			</div>
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Freight modes</span>
 			</label>
-			<div class="sm-12 md-6 lg-2">
+			<div class="sm-12 md-4 lg-2">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-ship fa-3x" aria-hidden="true"></i>
 					Air <br>Charter
 				</a>
 			</div>
-			<div class="sm-12 md-6 lg-2">
+			<div class="sm-12 md-4 lg-2">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-car fa-3x" aria-hidden="true"></i>
 					On Board <br>Courier
 				</a>
 			</div>
-			<div class="sm-12 md-6 lg-2">
+			<div class="sm-12 md-4 lg-2">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-rocket fa-3x" aria-hidden="true"></i>
 					Regular <br>Airfreight
 				</a>
 			</div>
-			<div class="sm-12 md-6 lg-2">
+			<div class="sm-12 md-4 lg-2">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-subway fa-3x" aria-hidden="true"></i>
 					Next Flight <br>Out
 				</a>
 			</div>
-			<div class="sm-12 md-6 lg-2">
+			<div class="sm-12 md-4 lg-2">
 				<a href="" class="option-has-icon">
 					<i class="fa fa-bus fa-3x" aria-hidden="true"></i>
 					Road <br>Freight

@@ -17,17 +17,30 @@ title: CargoKit
 				<span class='title'>Shipment title</span>
 				<input type="text" placeholder="e.g. 'invoice number'"></input>
 			</div>
-			<div class="sm-12 md-6 lg-3">
+			<div class="sm-12 md-6 lg-4">
 				<span class='title'>Cost center</span>
-				<input type="text" placeholder="Search..."></input>
+				<div class="custom-select custom-select--independent" data-get-focus-parent>
+				 	<select data-get-focus>
+						<option value="Shanghai">Search...</option>
+						<option value="Singapore">Singapore</option>
+						<option value="Australia">Australia</option>
+				 	</select>
+				</div>
 			</div>
-			<div class="sm-12 md-6 lg-3">
+			<div class="sm-12 md-7 lg-3">
 				<span class='title'>Location</span>
-				<input type="text" placeholder="Shanghai"></input>
+				<div class="custom-select custom-select--independent" data-get-focus-parent>
+				 	<select data-get-focus>
+						<option value="Shanghai">Shanghai</option>
+						<option value="Amsterdam">Amsterdam</option>
+						<option value="Singapore">Singapore</option>
+						<option value="Australia">Australia</option>
+				 	</select>
+				</div>
 			</div>
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Goods value</span>
 			</label>
@@ -46,7 +59,7 @@ title: CargoKit
 			</div>
 		</div>
 
-		<div class="row sm-pt-1 sm-pb-1">
+		<div class="row sm-pb-1">
 			<label class="sm-12 lg-2">
 				<span>Goods description</span>
 			</label>
@@ -55,12 +68,12 @@ title: CargoKit
 			</div>
 		</div>
 
-		<div class="item-has-rows sm-pt-1 sm-pb-1">
+		<div class="item-has-rows sm-pb-1">
 			<div class="row">
 				<label class="sm-12 lg-2">
 					<span>Item 1</span>
 				</label>
-				<div class="sm-12 lg-9">
+				<div class="sm-12 lg-10">
 					<div class="multiple-inputs multiple-inputs--select-40" data-get-focus-parent>
 						<input type="text" placeholder="Units" data-get-focus></input>
 						<div class="custom-select">
@@ -90,7 +103,7 @@ title: CargoKit
 						</div>
 					</div>
 				</div>
-				<div class="sm-12 md-6 lg-3">
+				<div class="sm-12 md-6 lg-4">
 					<div class="multiple-inputs multiple-inputs--select-40" data-get-focus-parent>
 						<input type="text" placeholder="Weight" data-get-focus></input>
 						<div class="custom-select">
@@ -113,9 +126,9 @@ title: CargoKit
 				<label class="sm-hide lg-show lg-2">
 					<span></span>
 				</label>
-				<div class="sm-12 lg-9">
+				<div class="sm-12 lg-10">
 					<ul class="list-reset form__options">
-						<li><a href="" class="">Stackable</a></li>
+						<li><a href="" class="active">Stackable</a></li>
 						<li><a href="">Hazardous</a></li>
 						<li><a href="">Pallet removable</a></li>
 						<li><a href="" class="link--hint"><i class="fa fa-info" aria-hidden="true"></i>Additional information</a></li>
@@ -127,7 +140,7 @@ title: CargoKit
 				<label class="sm-hide lg-show lg-2">
 					<span></span>
 				</label>
-				<div class="sm-12 lg-9">
+				<div class="sm-12 lg-10">
 					<a href="" class="add-item" data-add-item><i class="fa fa-plus" aria-hidden="true"></i> Add item</a>
 				</div>
 			</div>
@@ -135,7 +148,7 @@ title: CargoKit
 		</div>
 
 		<footer class="form__footer">
-			<hr class="sm-mt-1 md-mt-2 md-mb-2 lg-mt-3 lg-mb-3">
+			<hr class="sm-mt-1 sm-mb-2 md-mt-2 md-mb-3">
 			<a class="button right" href="invite-providers.html">
 				Next:
 				<em>Pickup and Delivery</em>

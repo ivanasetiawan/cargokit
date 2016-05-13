@@ -78,11 +78,10 @@
 
 .form__options {
 	font-weight: 600;
-	font-size: em(11px);
 
 	li {
 		display: inline-block;
-		margin-right: em(10px);
+		margin: 0 em(10px) 0 0;
 	}
 
 	a {
@@ -93,6 +92,8 @@
 		transition: color 0.2s, border-color 0.25s;
 		border-radius: $radius;
 		font-weight: 700;
+		font-size: em(11px);
+		&.active,
 		&:hover {
 			border-color: cl('blue');
 			color: cl('blue');
@@ -104,7 +105,23 @@
 	border-color: transparent !important;
 	padding: 0 !important;
 	font-weight: 700;
+	font-size: em(11px, 14px);
+
 	i { margin-right: em(10px); }
+
+
+	&-parent {
+		@include bp('md+') {
+			position: relative;
+			padding-top: em(20px);
+			@at-root & .link--hint {
+				position: absolute;
+				top: em(-4px);
+				right: em(10px);
+			}
+		}
+	}
+
 }
 
 .shipment-steps {
@@ -205,12 +222,6 @@
 	}
 }
 
-.form-shipment {
-	@include bp('lg-') {
-		> .row > .md-6 { padding-top: em(10px); }
-	}
-}
-
 .option-has-icon {
 	display: block;
 	padding: em(20px);
@@ -219,11 +230,17 @@
 	color: cl('grey-light-font');
 	transition: border-color 0.2s;
 	line-height: 1.4;
+
 	&:hover {
 		border-color: cl('blue');
 	}
+
 	i {
 		display: block;
 		margin-bottom: 10px;
+	}
+
+	@include bp('lg-') {
+		padding-bottom: em(10px);
 	}
 }
