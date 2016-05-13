@@ -6,7 +6,7 @@ title: CargoKit
 	<ul class="list-reset sm-mt-2 sm-mb-2 lg-mt-3 lg-mb-3 shipment-steps">
 		<li><a href="/" class="passed">Shipment details</a></li>
 		<li><span class="active">Pickup and Delivery</span></li>
-		<li><span>Invite providers</span></li>
+		<li><a href="/invite-providers.html">Invite providers</a></li>
 	</ul>
 	<form class="form-shipment">
 		<div class="row sm-pb-1">
@@ -161,11 +161,20 @@ title: CargoKit
 		</div>
 
 		<footer class="form__footer">
-			<hr class="sm-mt-1 md-mt-2 md-mb-2 lg-mt-3 lg-mb-3">
-			<button type="submit" class="button right">
+			<hr class="sm-mt-1 sm-mb-2 md-mt-2 md-mb-3">
+			<div class="right">
+				<a href="/" class="prev-step">Back</a>
+				<a class="button" href="invite-providers.html">
+					Next:
+					<em>Invite providers</em>
+				</a>
+			</div>
+
+			<!-- Ideally button, currently link for styling purpose
+				<button type="submit" class="button right">
 				Next:
-				<em>Invite providers</em>
-			</button>
+				<em>Pickup and Delivery</em>
+			</button> -->
 		</footer>
 	</form>
 </main>

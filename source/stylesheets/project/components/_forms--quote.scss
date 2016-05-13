@@ -109,7 +109,6 @@
 
 	i { margin-right: em(10px); }
 
-
 	&-parent {
 		@include bp('md+') {
 			position: relative;
@@ -121,7 +120,6 @@
 			}
 		}
 	}
-
 }
 
 .shipment-steps {
@@ -241,6 +239,11 @@
 	}
 
 	@include bp('lg-') {
-		padding-bottom: em(10px);
+		margin-bottom: em(10px);
 	}
+}
+
+.prev-step {
+	margin-right: em(20px);
+	color: cl('blue-darkest');
 }

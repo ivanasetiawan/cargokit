@@ -60,7 +60,8 @@ label,
 
 input[type='text'],
 input[type='email'],
-input[type='password'], {
+input[type='password'],
+textarea {
 	@extend %border-base;
 	width: 100%;
 	padding: {
@@ -70,4 +71,9 @@ input[type='password'], {
 	background: transparent;
 	transition: border 0.2s;
 	@include focusing;
+}
+
+textarea {
+	resize: none;
+	min-height: em(100px);
 }
