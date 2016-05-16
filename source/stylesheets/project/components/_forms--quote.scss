@@ -168,8 +168,7 @@
 	}
 }
 
-.total,
-.add-item {
+.total{
 	display: block;
 	border-radius: $radius;
 	background: cl('blue-lightest');
@@ -189,17 +188,6 @@
 	color: cl('blue-darkest');
 }
 
-.add-item {
-	&:hover {
-		background-color: cl('blue-light');
-		color: cl('white');
-	}
-
-	i {
-		margin-right: em(10px, 20px);
-	}
-}
-
 .item-has-rows {
 	> .row:not(:first-child) {
 		padding-top: em(10px);
@@ -214,4 +202,28 @@
 .prev-step {
 	margin-right: em(20px);
 	color: cl('blue-darkest');
+}
+
+.form__actions {
+	.add-item,
+	.remove-item {
+		border-radius: $radius;
+		padding: {
+			left: $gutter;
+			right: $gutter;
+		}
+		background: cl('blue');
+		color: cl('white');
+		line-height: em(32px, $font-size-default);
+		outline: none;
+	}
+	.remove-item { background: cl('red'); }
+
+	@include bp('lg+') {
+		margin-left: calc(16.66667% + 5px);
+	}
+}
+
+.item-id {
+	vertical-align: top;
 }
