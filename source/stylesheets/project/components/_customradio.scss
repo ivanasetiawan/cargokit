@@ -1,0 +1,51 @@
+// Input radio behaviour styling on elements.
+// How to use it:
+//
+//	<a href="" class="custom-radio-behaviour">
+//		<i class="fa fa-ship fa-3x" aria-hidden="true"></i>
+//		Air <br>Charter
+//	</a>
+//
+// OR use on input radio button
+//
+//	<label class="custom-radio-behaviour" data-custom-radio-parent>
+//		<input type="radio" name="clearance" value="Import clearance" data-custom-radio>
+//		<i class="fa fa-rocket fa-3x" aria-hidden="true"></i>
+//		Import clearance
+//	</label>
+
+%baseCustomRadioOpt {
+	color: cl('grey-light-font');
+	border: solid 1px cl('grey-light');
+	border-radius: $radius;
+	transition: color 0.2s, border-color 0.25s;
+
+	&.active,
+	&:hover {
+		border-color: cl('blue');
+		color: cl('blue');
+		i {
+			color: cl('blue');
+		}
+	}
+}
+
+input[type="radio"] { display:none; }
+
+.custom-radio-behaviour {
+	@extend %baseCustomRadioOpt;
+	text-align: center;
+	display: block;
+	padding: em(20px);
+	line-height: 1.4;
+
+	i {
+		display: block;
+		margin-bottom: 10px;
+		color: cl('grey-light-font');
+	}
+
+	@include bp('lg-') {
+		margin-bottom: em(10px);
+	}
+}

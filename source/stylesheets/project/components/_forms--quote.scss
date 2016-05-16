@@ -76,28 +76,19 @@
 	}
 }
 
-.form__options {
-	font-weight: 600;
+.form__inline-options {
 
 	li {
 		display: inline-block;
-		margin: 0 em(10px) 0 0;
+		margin: 0 em(5px) 0 0;
 	}
 
-	a {
+	label, a {
+		@extend %baseCustomRadioOpt;
 		display: block;
-		color: cl('grey-light-font');
 		padding: rem(5px) rem(10px);
-		border: solid 1px cl('grey-light');
-		transition: color 0.2s, border-color 0.25s;
-		border-radius: $radius;
-		font-weight: 700;
 		font-size: em(11px);
-		&.active,
-		&:hover {
-			border-color: cl('blue');
-			color: cl('blue');
-		}
+		font-weight: 700;
 	}
 }
 
@@ -217,29 +208,6 @@
 		.has-subs > .md-6 {
 			padding-top: em(10px);
 		}
-	}
-}
-
-.option-has-icon {
-	display: block;
-	padding: em(20px);
-	text-align: center;
-	border: solid 1px cl('grey-light');
-	color: cl('grey-light-font');
-	transition: border-color 0.2s;
-	line-height: 1.4;
-
-	&:hover {
-		border-color: cl('blue');
-	}
-
-	i {
-		display: block;
-		margin-bottom: 10px;
-	}
-
-	@include bp('lg-') {
-		margin-bottom: em(10px);
 	}
 }
 

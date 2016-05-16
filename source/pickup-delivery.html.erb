@@ -80,10 +80,25 @@ title: CargoKit
 						</select>
 					</div>
 				</div>
-				<ul class="list-reset form__options sm-pt-1">
-					<li><a href="" class="active">Fixed date and time</a></li>
-					<li><a href="">Flexible</a></li>
-					<li><a href="">ASAP</a></li>
+				<ul class="list-reset form__inline-options sm-pt-1">
+					<li>
+						<label class="custom-radio-behaviour" data-custom-radio-parent>
+							<input type="radio" name="timing" value="Fixed date and time" data-custom-radio>
+							Fixed date and time
+						</label>
+					</li>
+					<li>
+						<label class="custom-radio-behaviour" data-custom-radio-parent>
+							<input type="radio" name="timing" value="Flexible" data-custom-radio>
+							Flexible
+						</label>
+					</li>
+					<li>
+						<label class="custom-radio-behaviour" data-custom-radio-parent>
+							<input type="radio" name="timing" value="ASAP" data-custom-radio>
+							ASAP
+						</label>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -93,19 +108,48 @@ title: CargoKit
 				<span>Custom clearance</span>
 			</label>
 			<div class="sm-12 md-4 lg-3">
-				<a href="" class="option-has-icon">
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="clearance" value="Export clearance" data-custom-radio>
+					<i class="fa fa-ship fa-3x" aria-hidden="true"></i>
+					Export clearance
+				</label>
+			</div>
+
+			<div class="sm-12 md-4 lg-3">
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="clearance" value="Transit clearance" data-custom-radio>
+					<i class="fa fa-plane fa-3x" aria-hidden="true"></i>
+					Transit clearance
+				</label>
+			</div>
+
+			<div class="sm-12 md-4 lg-3">
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="clearance" value="Import clearance" data-custom-radio>
+					<i class="fa fa-rocket fa-3x" aria-hidden="true"></i>
+					Import clearance
+				</label>
+			</div>
+		</div>
+
+		<div class="row sm-pb-1">
+			<label class="sm-12 lg-2">
+				<span>Example using link</span>
+			</label>
+			<div class="sm-12 md-4 lg-3">
+				<a href="" class="custom-radio-behaviour">
 					<i class="fa fa-ship fa-3x" aria-hidden="true"></i>
 					Export clearance
 				</a>
 			</div>
 			<div class="sm-12 md-4 lg-3">
-				<a href="" class="option-has-icon">
+				<a href="" class="custom-radio-behaviour">
 					<i class="fa fa-plane fa-3x" aria-hidden="true"></i>
 					Transit clearance
 				</a>
 			</div>
 			<div class="sm-12 md-4 lg-3">
-				<a href="" class="option-has-icon">
+				<a href="" class="custom-radio-behaviour">
 					<i class="fa fa-rocket fa-3x" aria-hidden="true"></i>
 					Import clearance
 				</a>
@@ -128,35 +172,47 @@ title: CargoKit
 			<label class="sm-12 lg-2">
 				<span>Freight modes</span>
 			</label>
+			<!-- Can also be a link if preferred:
 			<div class="sm-12 md-4 lg-2">
-				<a href="" class="option-has-icon">
+				<a href="" class="custom-radio-behaviour">
 					<i class="fa fa-ship fa-3x" aria-hidden="true"></i>
 					Air <br>Charter
 				</a>
+			</div> -->
+			<div class="sm-12 md-4 lg-2">
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="mode" value="Air Charter" data-custom-radio>
+					<i class="fa fa-space-shuttle fa-3x" aria-hidden="true"></i>
+					Air <br>Charter
+				</label>
 			</div>
 			<div class="sm-12 md-4 lg-2">
-				<a href="" class="option-has-icon">
-					<i class="fa fa-car fa-3x" aria-hidden="true"></i>
-					On Board <br>Courier
-				</a>
-			</div>
-			<div class="sm-12 md-4 lg-2">
-				<a href="" class="option-has-icon">
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="mode" value="On Board Courier" data-custom-radio>
 					<i class="fa fa-rocket fa-3x" aria-hidden="true"></i>
+					On Board <br>Courier
+				</label>
+			</div>
+			<div class="sm-12 md-4 lg-2">
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="mode" value="Regular Airfreight" data-custom-radio>
+					<i class="fa fa-plane fa-3x" aria-hidden="true"></i>
 					Regular <br>Airfreight
-				</a>
+				</label>
 			</div>
 			<div class="sm-12 md-4 lg-2">
-				<a href="" class="option-has-icon">
-					<i class="fa fa-subway fa-3x" aria-hidden="true"></i>
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="mode" value="Next Flight Out" data-custom-radio>
+					<i class="fa fa-fighter-jet fa-3x" aria-hidden="true"></i>
 					Next Flight <br>Out
-				</a>
+				</label>
 			</div>
 			<div class="sm-12 md-4 lg-2">
-				<a href="" class="option-has-icon">
+				<label class="custom-radio-behaviour" data-custom-radio-parent>
+					<input type="radio" name="mode" value="Road Freight" data-custom-radio>
 					<i class="fa fa-bus fa-3x" aria-hidden="true"></i>
 					Road <br>Freight
-				</a>
+				</label>
 			</div>
 		</div>
 
