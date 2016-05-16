@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 	// Custom radio input
 	$('[data-custom-radio]').on('change', function() {
-		$('[data-custom-radio]').closest('[data-custom-radio-parent]').removeClass('active');
+		$(this).parents('[data-custom-radio-row]').find('[data-custom-radio-parent]').removeClass('active');
 
 		if ($(this).is(':checked')) {
 			$(this).closest('[data-custom-radio-parent').addClass('active');
@@ -30,7 +30,6 @@ $(document).ready(function () {
 		event.preventDefault();
 		$(this).parents('[data-cloned-input]').clone()
 			.appendTo('[data-add-items]')
-			.attr('bla', cloneIndex)
 			.attr('id', 'clonedItem' +  cloneIndex)
 			.find('*')
 			.each(function() {
