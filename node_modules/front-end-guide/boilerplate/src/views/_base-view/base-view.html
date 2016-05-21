@@ -1,0 +1,66 @@
+<!doctype html>
+
+<!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
+<html lang="en" class="<!--#if expr='$HTTP_COOKIE=/fonts\-loaded\=true/' -->fonts-loaded<!--#endif --> no-js">
+<!--#else -->
+<html lang="en" class="no-js">
+<!--#endif -->
+
+<head prefix="og: http://ogp.me/ns#"><!-- enable Open Graph: http://ogp.me/ -->
+
+    <!-- charset & http-equiv may be set via response header: https://github.com/h5bp/html5-boilerplate/blob/master/doc/html.md#x-ua-compatible -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block title %} Demo Project{#{{ pkg.name }}#}{% endblock %}</title>
+    <meta name="description" content="{{ pkg.description }}">
+    <meta name="keywords" content="{{ pkg.keywords | join(', ') }}">
+    <meta property="og:image" content="http://voorhoede.github.io/front-end-guide/assets/components/app-logo/demo-logo.png">
+    <meta property="og:url"   content="http://voorhoede.github.io/front-end-guide/">
+    <!-- optionally add more Open Graph metadata: http://ogp.me/#metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- specify viewport: https://developers.google.com/speed/docs/insights/ConfigureViewport -->
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <!-- Enable styling of HTML5 sectioning elements in legacy browsers. Simplified inline version of HTML5Shiv (https://github.com/aFarkas/html5shiv) for enhanced performance -->
+    <!--[if lt IE 9]>
+    <script>
+        (function (d, a) { var l = a.length; while(l--){ d.createElement(a[l]); } }(document,
+        ['HEADER', 'NAV', 'SECTION', 'FOOTER', 'ARTICLE', 'MAIN', 'FIGCAPTION', 'FIGURE', 'ASIDE']));
+    </script>
+    <![endif]-->
+
+    {% include "components/_asset-loader/asset-loader.html" %}
+
+    {% block styles %}
+        <!-- Include stylesheets here. Concatenate & minify for performance: https://developers.google.com/speed/docs/insights/MinifyResources -->
+        <link rel="stylesheet" href="{{ paths.assets }}index.css">
+    {% endblock %}
+</head>
+<body data-module="{{ module.id }}">
+{% block appHeader %}
+{% include "components/app-header/app-header.html" %}
+{% endblock %}
+
+{% block main %}
+<main id="content" role="main" tabindex="-1">
+    <!-- tabindex fixes focus issue, alternatively use generic script: http://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/ -->
+    <!-- @todo: add nav[role="navigation"] as TOC -->
+    {% block content %}
+    {% endblock %}
+</main>
+{% endblock %}
+
+{% block appFooter %}
+{% include "components/app-footer/app-footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+    {% include "components/_font-loader/font-loader.html" %}
+
+    <!-- Include scripts here. Concatenate & minify for performance: https://developers.google.com/speed/docs/insights/MinifyResources -->
+    <!-- Note that the index.js is loaded in through "components/asset-loader/asset-loader.html"-->
+    <script>{% include "components/_app-debug/app-debug.js" %}</script>
+    <style type="text/css">{% include "components/_app-debug/app-debug.css" %}</style>
+{% endblock %}
+</body>
+</html>

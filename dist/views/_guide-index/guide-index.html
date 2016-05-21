@@ -1,0 +1,524 @@
+<!doctype html>
+
+<!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
+<html lang="en" class="<!--#if expr='$HTTP_COOKIE=/fonts\-loaded\=true/' -->fonts-loaded<!--#endif --> no-js">
+<!--#else -->
+<html lang="en" class="no-js">
+<!--#endif -->
+
+<head prefix="og: http://ogp.me/ns#"><!-- enable Open Graph: http://ogp.me/ -->
+
+    <!-- charset & http-equiv may be set via response header: https://github.com/h5bp/html5-boilerplate/blob/master/doc/html.md#x-ua-compatible -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> Demo Project</title>
+    <meta name="description" content="Manage your front-end project in unique views and reusable components.">
+    <meta name="keywords" content="front-end, guide, patternlab, reusable, components, modules">
+    <meta property="og:image" content="http://voorhoede.github.io/front-end-guide/assets/components/app-logo/demo-logo.png">
+    <meta property="og:url"   content="http://voorhoede.github.io/front-end-guide/">
+    <!-- optionally add more Open Graph metadata: http://ogp.me/#metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- specify viewport: https://developers.google.com/speed/docs/insights/ConfigureViewport -->
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <!-- Enable styling of HTML5 sectioning elements in legacy browsers. Simplified inline version of HTML5Shiv (https://github.com/aFarkas/html5shiv) for enhanced performance -->
+    <!--[if lt IE 9]>
+    <script>
+        (function (d, a) { var l = a.length; while(l--){ d.createElement(a[l]); } }(document,
+        ['HEADER', 'NAV', 'SECTION', 'FOOTER', 'ARTICLE', 'MAIN', 'FIGCAPTION', 'FIGURE', 'ASIDE']));
+    </script>
+    <![endif]-->
+
+    <!-- asset-loader component -->
+
+<!-- Check serverside for cookie 'icons'. If it is present render the link tag and put the value from the cookie in the href attribute. In development we do this with apache conditionals.
+Also to not let it break when running on a node server we render it as a meta tag. On an Apache web server the meta starting and closing tag will never be rendered -->
+<!--#if expr="$HTTP_COOKIE = /.*icons=([^;]+);?.*/" -->
+<!--#if expr="$nonExistingVar"--><meta name="ssi-only:icons" content='<!--#endif-->
+<link rel="stylesheet" href="<!--#echo var="1"-->" />
+<!--#if expr="$nonExistingVar"-->'><!--#endif-->
+<!--#endif-->
+
+<!-- In no js browsers load the fallback icons -->
+<noscript><link rel="stylesheet" href="../../assets/icons-png-data.css"></noscript>
+
+<script>
+    var filePaths = {
+        rootpath : {
+            name : "rootpath",
+            path : "../../"
+        },
+        js : {
+            name : "full-js",
+            path : "../../assets/index.js"
+        },
+        icons : {
+            name : "icons",
+            svgData : "../../assets/icons-svg-data.css",
+            pngData : "../../assets/icons-png-data.css"
+        }
+    }
+</script>
+<!-- On a node server this script tag is rendered to never set cookies. On an Apache web server this will never get rendered. During integration leave this out. -->
+<!--#if expr="$nonExistingVar"-->
+<script>var useCookie = false;</script>
+<!--#endif-->
+
+<script>/**
+ * initial component
+ */
+(function (window, document) {
+    'use strict';
+
+    var isCapableBrowser = 'querySelector' in document,
+        fiveYears = 5 * 365;
+
+    /*! loadCSS: load a CSS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. Licensed MIT */
+    function loadCSS(href, before, media) {
+        // Arguments explained:
+        // `href` is the URL for your CSS file.
+        // `before` optionally defines the element we'll use as a reference for injecting our <link>
+        // By default, `before` uses the first <script> element in the page.
+        // However, since the order in which stylesheets are referenced matters, you might need a more specific location in your document.
+        // If so, pass a different reference element to the `before` argument and it'll insert before that instead
+        // note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
+        var ss = window.document.createElement('link');
+        var ref = before || window.document.getElementsByTagName('script')[0];
+        var sheets = window.document.styleSheets;
+        var rootpath = href.split(filePaths.rootpath.path)[1];
+        ss.rel = 'stylesheet';
+        ss.href = href;
+        // temporarily, set media to something non-matching to ensure it'll fetch without blocking render
+        ss.media = 'only x';
+        // inject link
+        ref.parentNode.insertBefore(ss, ref);
+        // This function sets the link's media back to `all` so that the stylesheet applies once it loads
+        // It is designed to poll until document.styleSheets includes the new sheet.
+        function toggleMedia() {
+            var defined;
+            for (var i = 0; i < sheets.length; i++) {
+
+                if (sheets[i].href && sheets[i].href.indexOf(rootpath) > -1) {
+                    defined = true;
+                }
+            }
+            if (defined) {
+                ss.media = media || 'all';
+            }
+            else {
+                setTimeout(toggleMedia);
+            }
+        }
+
+        toggleMedia();
+        return ss;
+    }
+
+    /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+    function loadJS(src, cb) {
+        var ref = window.document.getElementsByTagName("script")[0];
+        var script = window.document.createElement("script");
+        script.src = src;
+        script.async = true;
+        ref.parentNode.insertBefore(script, ref);
+        if (cb && typeof(cb) === "function") {
+            script.onload = cb;
+        }
+        return script;
+    }
+
+    function getCookie(name) {
+        // if value is undefined, get the cookie value
+        var cookiestring = "; " + window.document.cookie;
+        var cookies = cookiestring.split("; " + name + "=");
+        if (cookies.length === 2) {
+            return cookies.pop().split(";").shift();
+        }
+        return null;
+    }
+
+    window.setCookie = function (name, value, days) {
+        if (typeof useCookie === 'undefined') {
+            // if value is a false boolean, we'll treat that as a delete
+            if (value === false) {
+                days = -1;
+            }
+            var expires;
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toGMTString();
+            }
+            else {
+                expires = "";
+            }
+            window.document.cookie = name + "=" + value + expires + "; path=/";
+        }
+    };
+
+    // modified grunticon loader used for loading the correct icon file
+    function grunticon(svgData, pngData) {
+        var svgSupported = !!window.document.createElementNS && !!window.document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect && !!window.document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") && !(window.opera && navigator.userAgent.indexOf('Chrome') === -1),
+            load = function (data) {
+                var cssUrl = (data && svgSupported) ? svgData : pngData;
+                loadCSS(cssUrl);
+                setCookie(filePaths.icons.name, cssUrl, fiveYears);
+            },
+
+        // Thanks Modernizr
+            img = new window.Image();
+
+        img.onerror = function () {
+            load(false);
+        };
+
+        img.onload = function () {
+            load(img.width === 1 && img.height === 1);
+        };
+
+        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    }
+
+    // load icons
+    if (filePaths.icons && !getCookie(filePaths.icons.name)) {
+        grunticon(filePaths.icons.svgData, filePaths.icons.pngData);
+    }
+
+    // load js async and toggle no-js class
+    if (isCapableBrowser) {
+        loadJS(filePaths.js.path, function () {
+            // Enable styling differentiation between browsers who passed our isCapableBrowser test
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        });
+    }
+
+}(window, document));
+</script>
+<!-- /asset-loader component -->
+
+
+    
+    
+        <!-- Include stylesheets here. Concatenate & minify for performance: https://developers.google.com/speed/docs/insights/MinifyResources -->
+        <link rel="stylesheet" href="../../assets/index.css">
+    
+    <link rel="stylesheet" href="../../views/_guide-index/guide-index.css">
+
+</head>
+<body data-module="views/_guide-index">
+
+
+
+<main id="content" role="main" tabindex="-1">
+    <!-- tabindex fixes focus issue, alternatively use generic script: http://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/ -->
+    <!-- @todo: add nav[role="navigation"] as TOC -->
+    
+    <article class="guide-index">
+        <h1>front-end-guide</h1>
+        <p>Manage your front-end project in unique views and reusable components.</p>
+
+        <section>
+            <h2>App</h2>
+            <ul>
+                <li><a href="../../front-end-guide.zip">Download as zip</a> - includes all views, components & assets.</li>
+                <li><a href="../../views/_style-guide/style-guide.html">Style guide</a> - all primary style rules and elements.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Assets</h2>
+            <p>All static assets - styles, scripts, images and fonts are bundled in <code class="language-bash">assets/</code>.</p>
+            <h3>Styles</h3>
+            <p>
+                All stylesheets of all views, components and common styles are combined and minified into
+                <code class="language-bash">assets/index.css</code>. Extra (vendor) stylesheets may be included on a
+                per view basis, so please check the HTML of each view during implementation.
+                Please make sure to load the stylesheets in the <code class="language-markup">&lt;head&gt;</code>.
+            </p>
+            <p>
+                Note: for debugging it's useful to copy <code class="language-bash">assets/index.css.map</code>
+                to the same directory as <code class="language-bash">index.css</code>.
+                <br>Note: all fonts and images referenced in CSS expect these assets to be available on a file path
+                relative to the stylesheet. You may need to do a find &amp; replace to adjust these paths.
+            </p>
+            <h3>Scripts</h3>
+            <p>
+                All scripts of all views, components and common styles are combined and minified into
+                <code class="language-bash">assets/index.js</code>. Extra (vendor) scripts may be included on a
+                per view basis, so please check the HTML of each view during implementation.
+                Please make sure to load the scripts just before the closing
+                <code class="language-markup">&lt;/body&gt;</code> tag.
+            </p>
+            <p>
+                Note: for debugging it's useful to copy <code class="language-bash">assets/index.js.map</code>
+                to the same directory as <code class="language-bash">index.js</code>.
+            </p>
+        </section>
+
+        <section>
+            <h2>Views</h2>
+            <p>Each view is unique and compiled out of one or more components.</p>
+            <ul>
+                
+                
+                    <li>
+                        <a href="../../views/home/home.html">home</a>
+                        <a href="../../views/home/home.html?annotate"
+                           title="annotated view" class="guide-index-icon-tag"></a>
+                    </li>
+                
+            </ul>
+            <p>All views are available separately in <code class="language-bash">views/</code>.</p>
+        </section>
+
+        <section>
+            <h2>Components</h2>
+            <p>
+                Components are your site's or app's building blocks. Each component has its own structure/markup (HTML),
+                presentation (CSS) and behavior (JS).
+            </p>
+            <ul>
+                
+                
+                    <li><a href="../../components/app-core-styles/app-core-styles-preview.html">app-core-styles</a></li>
+                
+                    <li><a href="../../components/app-footer/app-footer-preview.html">app-footer</a></li>
+                
+                    <li><a href="../../components/app-header/app-header-preview.html">app-header</a></li>
+                
+            </ul>
+            <p>All components are available separately in <code class="language-bash">components/</code>.</p>
+        </section>
+    </article>
+
+</main>
+
+
+
+<!-- app-footer component -->
+<footer role="contentinfo" class="app-footer" data-component="app-footer">
+    <p>Project &copy; 2015</p>
+</footer>
+<!-- /app-footer -->
+
+
+
+    <!--#if expr="$HTTP_COOKIE != /.*fonts\-loaded=([^;]+);?.*/" -->
+<!-- font-loader component -->
+<script>
+    window.Promise || document.write('<script src="../../assets/components/_font-loader/promise.js"><\/script>');
+</script>
+
+<script>
+    /* jshint ignore:start */
+/* fontfaceobserver Copyright (c) 2015 - Bram Stein https://github.com/bramstein/fontfaceobserver/*/
+(function(){'use strict';function e(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.f=document.createElement("span");this.e=document.createElement("span");this.d=-1;this.b.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;";this.c.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;";
+this.e.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;";this.f.style.cssText="display:inline-block;width:200%;height:200%;";this.b.appendChild(this.f);this.c.appendChild(this.e);this.a.appendChild(this.b);this.a.appendChild(this.c)}function t(a,b,c){a.a.style.cssText="min-width:20px;min-height:20px;display:inline-block;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font-size:100px;font-family:"+b+";"+c}
+function u(a){var b=a.a.offsetWidth,c=b+100;a.e.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.d!==b?(a.d=b,!0):!1}function v(a,b){a.b.addEventListener("scroll",function(){u(a)&&null!==a.a.parentNode&&b(a.d)},!1);a.c.addEventListener("scroll",function(){u(a)&&null!==a.a.parentNode&&b(a.d)},!1);u(a)};function w(a,b){this.family=a;this.style=b.style||"normal";this.variant=b.variant||"normal";this.weight=b.weight||"normal";this.stretch=b.stretch||"stretch";this.featureSettings=b.featureSettings||"normal"}var x=null;
+w.prototype.a=function(a,b){var c=a||"BESbswy",z=b||3E3,f="font-style:"+this.style+";font-variant:"+this.variant+";font-weight:"+this.weight+";font-stretch:"+this.stretch+";font-feature-settings:"+this.featureSettings+";-moz-font-feature-settings:"+this.featureSettings+";-webkit-font-feature-settings:"+this.featureSettings+";",g=document.createElement("div"),m=new e(c),n=new e(c),p=new e(c),h=-1,d=-1,k=-1,q=-1,r=-1,s=-1,l=this;t(m,"sans-serif",f);t(n,"serif",f);t(p,"monospace",f);g.appendChild(m.a);
+g.appendChild(n.a);g.appendChild(p.a);document.body.appendChild(g);q=m.a.offsetWidth;r=n.a.offsetWidth;s=p.a.offsetWidth;return new Promise(function(a,b){function c(){null!==g.parentNode&&document.body.removeChild(g)}function y(){if(-1!==h&&-1!==d&&-1!==k&&h===d&&d===k){if(null===x){var b=/AppleWeb[kK]it\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);x=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))}x?h===q&&d===q&&k===q||h===r&&d===r&&k===r||h===s&&d===s&&
+k===s||(c(),a(l)):(c(),a(l))}}setTimeout(function(){c();b(l)},z);v(m,function(a){h=a;y()});t(m,l.family+",sans-serif",f);v(n,function(a){d=a;y()});t(n,l.family+",serif",f);v(p,function(a){k=a;y()});t(p,l.family+",monospace",f)})};window.FontFaceObserver=w;window.FontFaceObserver.prototype.check=w.prototype.a;}());
+/* jshint ignore:end */
+    /*
+ Fonts are loaded through @font-face rules in the CSS whenever an element references them.
+ FontFaceObserver creates a referencing element to trigger the font request, and listen for font load events.
+ When all fonts are loaded, we enable them by adding a class to the html element
+ */
+(function (w) {
+    'use strict';
+
+    // if the class is already set, we're good.
+    if (w.document.documentElement.className.indexOf("fonts-loaded ") > -1) {
+        return;
+    }
+
+    var sourceSansProRegularFont = new w.FontFaceObserver("source_sans_pro", {
+            weight: 400
+        }),
+        sourceSansProSemiBoldFont = new w.FontFaceObserver("source_sans_pro", {
+            weight: 700
+        });
+
+    w.Promise
+        .all([
+            sourceSansProRegularFont.check(),
+            sourceSansProSemiBoldFont.check()
+        ])
+        .then(
+        function () {
+            w.document.documentElement.className += " fonts-loaded";
+            w.setCookie('fonts-loaded', true, 5 * 365);
+        },
+        function () {
+            console.log('err while observing font');
+        }
+    );
+}(window));
+
+</script>
+<!-- /font-loader component -->
+<!--#endif -->
+
+
+    <!-- Include scripts here. Concatenate & minify for performance: https://developers.google.com/speed/docs/insights/MinifyResources -->
+    <!-- Note that the index.js is loaded in through "components/asset-loader/asset-loader.html"-->
+    <script>(function(doc){
+	'use strict';
+
+	var moduleId = doc.querySelector('[data-module]').getAttribute('data-module');
+	var components = doc.querySelectorAll('[data-component]');
+
+	annotateComponents();
+
+	if(window.location.href.indexOf('annotate') > 0){ toggleAnnotations(true); }
+	window.toggleAnnotations = toggleAnnotations;
+	//toggleAnnotations();
+
+	// setup two-way communication with parent frame
+	if(window.top) {
+
+		if (window.addEventListener) {
+
+			window.addEventListener('load', function (event) {
+				var path = window.location.pathname;
+				window.top.postMessage({
+					moduleId: moduleId
+				}, '*');
+			}, false);
+
+			window.addEventListener('message', function(event){
+				var message = event.data;
+				if(message.fromViewer && message.showAnnotations !== undefined){
+					toggleAnnotations(message.showAnnotations);
+				}
+			}, false);
+		} else if (window.attachEvent)  {
+
+			window.attachEvent('onload', function(event){
+				var path = window.location.pathname;
+				window.top.postMessage({
+					moduleId: moduleId
+				}, '*');
+			});
+
+			window.attachEvent('onmessage', function(event){
+				toggleAnnotations();
+			});
+		}
+	}
+
+
+	function annotateComponents() {
+
+		for(var index = 0, length = components.length; index < length; index++){
+			var name = components[index].getAttribute('data-component');
+			var label = doc.createElement('a');
+			label.innerHTML = name;
+			label.href = '../../components/' + name + '/' + name + '-preview.html';
+			addClass(label, 'debug-label' );
+			components[index].appendChild(label);
+		}
+
+	}
+
+	function toggleAnnotations(show) {
+
+
+		for(var index = 0, length = components.length; index < length; index++){
+			toggleClass(components[index], 'debug-component');
+		}
+	}
+
+	/**
+		IE8 DOM Helpers
+		<cite>God, forgive me 'cause I've sin</cite>
+	**/
+
+	/**
+	 * containsClass
+	 * Borrowed from: http://hacks.mozilla.org/2010/01/classlist-in-firefox-3-6/
+	 * @param {HTMLElement} element
+	 * @param {String} className
+	 */
+	function containsClass (element, className) {
+		if (document.documentElement.classList) {
+			return element.classList.contains(className);
+		} else {
+			var re = new RegExp('(^|\\s)' + className + '(\\s|$)');
+			return element.className.match(re);
+		}
+	}
+
+	/**
+	 * Borrowed from: http://hacks.mozilla.org/2010/01/classlist-in-firefox-3-6/
+	 * @param {HtmlElement} element
+	 * @param {String} className
+	 */
+	function addClass (element, className) {
+		if (document.documentElement.classList) {
+			element.classList.add(className);
+		} else {
+			if (!containsClass(element, className)) {
+				element.className += (element.className ? ' ' : '') + className;
+			}
+		}
+	}
+
+	/**
+	 * Borrowed from: http://hacks.mozilla.org/2010/01/classlist-in-firefox-3-6/
+	 * @param {HtmlElement} element
+	 * @param {String} className
+	 */
+	function removeClass (element, className) {
+		if (document.documentElement.classList) {
+			element.classList.remove(className);
+		} else {
+			var regexp = new RegExp('(^|\\s)' + className + '(\\s|$)', 'g');
+			element.className = element.className.replace(regexp, '$2');
+		}
+	}
+
+	/**
+	 * Borrowed from: http://hacks.mozilla.org/2010/01/classlist-in-firefox-3-6/
+	 * @param {HtmlElement} element
+	 * @param {String} className
+	 */
+	function toggleClass (element, className){
+		if (document.documentElement.classList) {
+			return element.classList.toggle(className);
+		} else {
+			if (containsClass(element, className))
+			{
+				removeClass(element, className);
+				return false;
+			} else {
+				addClass(element, className);
+				return true;
+			}
+		}
+	}
+}(document));</script>
+    <style type="text/css">
+.debug-component {
+	outline: 2px solid black;
+	outline-offset: -2px;
+	position:relative;
+}
+
+.debug-label {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	color: white !important;
+	padding: .2em .5em;
+	background: black;
+}
+
+.debug-component .debug-label {
+	display: block;
+}</style>
+
+</body>
+</html>

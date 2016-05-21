@@ -1,0 +1,27 @@
+var gulp = require('gulp');
+var guide = require('front-end-guide')(gulp);
+
+gulp.task('build', ['build_html', 'build_js', 'build_less', 'copy_assets', 'copy_files']);
+gulp.task('build_assets', guide.tasks.runSequence('imagemin', 'copy_assets'));
+gulp.task('build_clean', guide.tasks.runSequence('clean_dist', 'build'));
+gulp.task('build_guide', guide.tasks.runSequence('build_clean', 'build_previews', 'build_module_info'));
+gulp.task('build_less', guide.tasks.buildLess());
+gulp.task('build_html', guide.tasks.buildHtml());
+gulp.task('build_js',['jshint_src'], guide.tasks.buildJs());
+gulp.task('build_less', guide.tasks.buildLess());
+gulp.task('build_module_info', guide.tasks.buildModuleInfo());
+gulp.task('build_previews', guide.tasks.buildPreviews());
+gulp.task('clean_dist', guide.tasks.cleanDist());
+gulp.task('default', ['build_guide']);
+gulp.task('copy_assets', guide.tasks.copyAssets());
+gulp.task('copy_files', guide.tasks.copyFiles());
+gulp.task('create_module', guide.tasks.createModule());
+gulp.task('jshint', ['jshint_src', 'jshint_node']);
+gulp.task('jshint_node', guide.tasks.jshintNode());
+gulp.task('jshint_src', guide.tasks.jshintSrc());
+gulp.task('imagemin', guide.tasks.runImagemin());
+gulp.task('serve', guide.tasks.serve());
+gulp.task('test_run', guide.tasks.test()('run'));
+gulp.task('test_watch', guide.tasks.test()('watch'));
+gulp.task('watch', guide.tasks.runSequence('build_guide', 'serve', guide.tasks.watch()));
+gulp.task('zip_dist', guide.tasks.zipDist());
