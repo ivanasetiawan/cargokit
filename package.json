@@ -76,6 +76,7 @@
   },
   "devDependencies": {
     "front-end-guide": "^0.5.6",
-    "gulp": "^3.8.11"
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0"
   }
 }
