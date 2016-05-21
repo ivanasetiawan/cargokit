@@ -1,14 +1,14 @@
 {
   "name": "cargobase-frontend",
   "version": "0.5.6",
-  "description": "Manage your front-end project in unique views and reusable components.",
+  "description": "Cargobase front-end project in unique views and reusable components.",
   "main": "index.js",
   "bin": {
     "front-end-guide": "./bin/scaffolding"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/voorhoede/front-end-guide.git"
+    "url": "bitbucket.org/j_vanderburgt/cargobase-ui-kit"
   },
   "keywords": [
     "front-end",
@@ -21,9 +21,9 @@
   "author": "De Voorhoede",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/voorhoede/front-end-guide/issues"
+    "url": "https://bitbucket.org/j_vanderburgt/cargobase-ui-kit/issues"
   },
-  "homepage": "https://github.com/voorhoede/front-end-guide",
+  "homepage": "https://www.cargobase.com/",
   "dependencies": {
     "bower": "1.4.1",
     "browser-sync": "2.6.4",
